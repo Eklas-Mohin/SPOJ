@@ -7,17 +7,17 @@
 using namespace std;
 
 const int mx = 1e8;
-vector<bool> prime(mx + 1, true);
+vector<bool> sieve(mx + 1, true);
 
 void primeSieve() {
-    prime[0] = prime[1] = false;
+    sieve[0] = sieve[1] = false;
     for (int i = 4; i <= mx; i += 2) {
-        prime[i] = false;
+        sieve[i] = false;
     }
     for (int i = 3; i * i <= mx; i += 2) {
-        if (prime[i]) {
+        if (sieve[i]) {
             for (int j = i * i; j <= mx; j += i) {
-                prime[j] = false;
+                sieve[j] = false;
             }
         }
     } 
@@ -27,7 +27,7 @@ void solve() {
     vector<int> primes;
     primes.push_back(2);
     for (int i = 3; i <= mx; i += 2) {
-        if (prime[i]) {
+        if (sieve[i]) {
             primes.push_back(i);
         }
     }
