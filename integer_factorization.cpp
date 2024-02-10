@@ -6,13 +6,13 @@
 
 using namespace std;
 
-vector<unsigned long long> primeFactorization(unsigned long long n) {
-    vector<unsigned long long> ans;
+vector<long long> primeFactorization(long long n) {
+    vector<long long> ans;
     while (n % 2 == 0) {
         ans.push_back(2);
         n /= 2;
     }
-    for (unsigned long long i = 3; i * i <= n; i += 2) {
+    for (long long i = 3; i * i <= n; i += 2) {
         while (n % i == 0) {
             ans.push_back(i);
             n /= i;
@@ -32,7 +32,7 @@ int main() {
         if (n == 0) {
             break;
         }
-        vector<unsigned long long> pf = primeFactorization(n);
+        vector<long long> pf = primeFactorization(n);
         sort(pf.begin(), pf.end());
         for (int i = 0; i < pf.size(); ++i) {
             int cnt{1};
